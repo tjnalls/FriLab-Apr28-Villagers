@@ -19,20 +19,7 @@ def all_species(filename):
         species.add(data[1])
         # print(data)
     
-    
-    # for row in data:
-    #     species.add(row[1])
 
-# species = {row[1] for data in csv_data}
-
-#     unique_names = set()
-# for data in name_data:
-#     unique_names.add(data[0])
-# print(len(unique_names)
-
-#  name_data = load_data('names_CA.csv')
-
-    # TODO: replace this with your code
 
     return species
 
@@ -49,12 +36,19 @@ def get_villagers_by_species(filename, search_string="All"):
     Return:
         - list[str]: a list of names
     """
-
     villagers = []
+
+    csv_data = open(filename)
+    for line in csv_data:
+        name, species = line.rstrip().split('|')[:2]
+        if species == search_string:
+            villagers.append(name)
 
     # TODO: replace this with your code
 
     return sorted(villagers)
+
+print(get_villagers_by_species('villagers.csv', 'Bear'))
 
 
 def all_names_by_hobby(filename):
